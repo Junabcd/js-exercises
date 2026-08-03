@@ -12,7 +12,7 @@
 
 ## 問題 8.2 💻🧪
 
-べき乗 ($x^n$) を計算する関数を、べき乗演算子 (`**`) を使わずに [時間計算量](https://atcoder.jp/contests/apg4b/tasks/APG4b_w?lang=ja) が $O(\ln n)$ となるように再帰およびループでぞれぞれ実装しなさい。$n$ は正の整数とする。
+べき乗 ($x^n$) を計算する関数を、べき乗演算子 (`**`) を使わずに [時間計算量](https://atcoder.jp/contests/apg4b/tasks/APG4b_w?lang=ja) が $O(\log n)$ となるように再帰およびループでそれぞれ実装しなさい。$n$ は正の整数とする。
 
 **ヒント**:
 
@@ -35,7 +35,7 @@ $b^{11}$ の計算は以下の乗算 5 回で計算可能である:
 - $b^n = (b^{n/2})^2$ (n が偶数の時)
 - $b^n = b * b^{n - 1}$ (n が奇数の時)
 
-上記のように計算を行えば $b^{2n}$ の計算には $b^n$ の計算と比べて乗算を追加で 1 回しか必要としない。そのため $n$ に対して必要な乗算の数は 2 を底とする $n$ の対数の程度に増加し、時間計算量は $O(\ln n)$ となる。
+上記のように計算を行えば $b^{2n}$ の計算には $b^n$ の計算と比べて乗算を追加で 1 回しか必要としない。そのため $n$ に対して必要な乗算の数は 2 を底とする $n$ の対数の程度に増加し、時間計算量は $O(\log n)$ となる。
 
 **出題範囲**: 8.2.1
 
@@ -79,7 +79,7 @@ obj.om();
 
 可変長引数を受け取り、以下の仕様でオブジェクトを返却する関数 `sequenceToObject(...values)`を作成しなさい。
 
-1. 奇数番に string の値を受け取り偶数番に任意の値を受け取り、各偶数奇数のペアで `{奇数番の値: 偶数番の値}`の形式になるオブジェクトを返却する。例えば`sequenceToObject("a", 1, "b", 2)`は`{a: 1, b: 2}`を返却する
+1. 奇数番に string の値を受け取り、偶数番に任意の値を受け取り、各奇数偶数のペアで `{奇数番の値: 偶数番の値}`の形式になるオブジェクトを返却する。例えば`sequenceToObject("a", 1, "b", 2)`は`{a: 1, b: 2}`を返却する
 2. いずれかの奇数番の値が string でない場合、または値の個数の合計が偶数ではない場合は例外を発生させる
 
 また作成した sequenceToObject に対してスプレッド演算子で配列を与えられることを確認しなさい。
@@ -109,7 +109,7 @@ console.log(args[1]); // ["A", "B"]
 
 ## 問題 8.7 🖋️
 
-https://www.ricoh.co.jp を開き、ロードされている js ファイル中で名前空間としての関数の即時関数実行式を使っている js ファイルを 1 つ以上見つけて URL を記載しなさい。
+https://www.ricoh.co.jp を開き、ロードされている js ファイル中で名前空間としての関数の即時実行関数式を使っている js ファイルを 1 つ以上見つけて URL を記載しなさい。
 
 ヒント: ロードされている js ファイル一覧は Chrome ではデベロッパーツールを開き"ソース"タブから確認できる
 
@@ -117,13 +117,13 @@ https://www.ricoh.co.jp を開き、ロードされている js ファイル中�
 
 ## 問題 8.8 💻📄
 
-文中の counter をグループ化したクロージャを持つ関数 counterGroup を実装しなさい。
+書籍 8.6 の counter をグループ化したクロージャを持つ関数 counterGroup を実装しなさい。
 具体的には counterGroup は以下のメソッドを持つオブジェクトを返却しなさい。
 
-- counterGroup#newCounter(): 文中の count と reset 同等の機能を持つ counter オブジェクトを返却する
+- counterGroup#newCounter(): 書籍 8.6 の count と reset 同等の機能を持つ counter オブジェクトを返却する
 - counterGroup#total(): これまで返却された counter が保持しているカウントの合計を返却する
-- counterGroup#average(): これまで返却された counter が保持しているカウントの平均を返却する。counterGroup に属する counter が 1 つ以上存在していない場合 TypeError をスローする
-- counterGroup#variance(): これまで返却された counter が保持しているカウントの分散を返却する。counterGroup に属する counter が 2 つ以上存在していない場合 TypeError をスローする
+- counterGroup#average(): これまで返却された counter が保持しているカウントの平均を返却する。counterGroup に属する counter が 1 つも存在しない場合 TypeError をスローする
+- counterGroup#variance(): これまで返却された counter が保持しているカウントの分散を返却する。counterGroup に属する counter が 2 つ未満の場合 TypeError をスローする
 
 **出題範囲**: 8.6
 
@@ -144,12 +144,12 @@ resource.doB();
 resource.close(); // これを忘れるとリソースがリークする
 ```
 
-解放処理の呼び出し忘れによるリソースのリークにを防ぐため、終了時に必ず close が呼ばれるようにする `withResource` 関数を書きなさい
+解放処理の呼び出し忘れによるリソースのリークを防ぐため、終了時に必ず close が呼ばれるようにする `withResource` 関数を書きなさい。
 
 ```js
 withResource(new Resource(), resource => {
   resource.doA();
-  resource.doB():
+  resource.doB();
 }); // 終了時に resource.close が自動で呼ばれる
 ```
 
@@ -161,11 +161,11 @@ withResource(new Resource(), resource => {
 
 ```js
 // 例
-const sqaure = (n) => n * n;
+const square = (n) => n * n;
 
 addMyCall(square);
 
-console.log(sqaure.myCall(null, 5)); // 25
+console.log(square.myCall(null, 5)); // 25
 
 function Product(name, price) {
   this.name = name;
@@ -209,7 +209,7 @@ console.log(arr.sort(f("$1 - $2")));
 
 **出題範囲**: 8.7.7
 
-## 問題 8.13 🖋💻
+## 問題 8.13 🖋️💻
 
 以下のコードが Web サービスの一部で使われており、引数の `input` には Web サービスの利用者が入力した文字列が渡されるものとする。
 

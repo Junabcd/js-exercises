@@ -153,7 +153,7 @@ Node で debugger 文を使ってデバッグする方法を調べなさい。
 ## 問題 5.12 💻
 
 非 strict モードでは動作するが strict モードでは動作しないプログラムを書き、それぞれ `not-strict.js`, `strict.js` として作成しなさい。
-`strict.js` を変更することによって、strict モードでも動作するようにしたプログラム `strict-fixed.js` を作成しなさい。
+`strict.js` のコードを変更することによって、strict モードでも動作するようにしたプログラム `strict-fixed.js` を作成しなさい。
 ただし、拡張子 `.js` は必要があれば変更してよい。
 
 **ヒント**:

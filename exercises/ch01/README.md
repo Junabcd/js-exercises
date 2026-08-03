@@ -24,6 +24,8 @@ javascript:alert("Hello, World!")
 
 ## 問題 1.4 🖋️
 
+`console.log()`の挙動を知るために、下記の手順に沿って実験しなさい。
+
 以下の内容を index.html に保存し、Web ブラウザで開きなさい。
 開発者ツール (Chrome の場合 F12) のコンソール上に何が表示されるか予想し、結果が一致するか確認しなさい。
 開発者ツールを開いた状態のタブで HTML を開く場合と、HTML を開いた状態のタブで開発者ツールを開く場合とで、結果を比較しなさい。
@@ -80,6 +82,7 @@ javascript:alert("Hello, World!")
 PowerShell の場合はファイルをメモ帳などで BOM 付きの UTF-8 として保存し、以下のコマンドで実行すればよい。
 
 ```sh
+# PowerShellの場合はNode.jsに渡す文字列がUTF-8になるように設定する
 > $OutputEncoding = [System.Text.Encoding]::UTF8
 
 # プログラムを実行 (JS)
@@ -113,7 +116,7 @@ entries = entries.filter((entry) => entry[1] >= 0.5);
 // padStart で表示幅を揃える / # の数を n ではなく 10 * n に変更
 const lines = entries.map(
   ([l, n]) =>
-    `${l.padStart(10)}: ${"#".repeat(Math.round(10 * n))} ${n.toFixed(2)}%`
+    `${l.padStart(10)}: ${"#".repeat(Math.round(10 * n))} ${n.toFixed(2)}%`,
 );
 ```
 

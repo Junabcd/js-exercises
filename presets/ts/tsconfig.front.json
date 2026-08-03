@@ -13,12 +13,11 @@
     // trueにしないとmoduleResolutionを設定しないとエラーになる
     "skipLibCheck": true
   },
-  "references": [
-    // Web Worker用設定ファイルを参照する
-    {
-      "path": "tsconfig.worker.json"
-    }
-  ],
+  // Web Worker用設定ファイル(tsconfig.worker.json)への参照。
+  // ビルド対象の *.worker.ts が1つも無い状態で参照するとエラー(TS18003)になるため、
+  // 初期状態ではコメントアウトしている。Web Workerの課題に取り組む際は、
+  // tsconfig.worker.jsonのincludeに対象ファイルを追加した上でコメントを解除すること。
+  // "references": [{ "path": "tsconfig.worker.json" }],
   // TODO: 適宜フロント用にビルドする必要があるディレクトリを追加していく
   "include": ["ch00.1/**/*"],
   // TODO: ↑の追加に合わせてテスト用のTSファイルとWeb Worker用のTSファイルを除外していく

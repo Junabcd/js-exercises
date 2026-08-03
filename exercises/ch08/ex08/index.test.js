@@ -13,7 +13,7 @@ describe("counterGroup", () => {
     });
 
     describe("#reset", () => {
-      test("It resets incrementedd value", () => {
+      test("It resets incremented value", () => {
         const cg = counterGroup();
         const counter = cg.newCounter();
         expect(counter.count()).toBe(0);

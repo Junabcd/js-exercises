@@ -8,6 +8,7 @@
     "composite": true
   },
   // TODO: 適宜Web Worker用にビルドするTSファイルを追加していく
+  // (追加したら tsconfig.front.json の references のコメントも解除すること)
   "include": ["ch00.1/**/*.worker.ts"],
   "exclude": []
 }
