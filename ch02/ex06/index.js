@@ -1,0 +1,1 @@
+export function fizzbuzz(){return Array.from({ length: 100 }, (v, n) => (((n+1)%3==0 ? "Fizz" : "") + ((n+1)%5==0 ? "Buzz" : "")) || n+1).join("\n") + "\n";}
