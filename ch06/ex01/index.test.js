@@ -1,4 +1,3 @@
-import { expect } from "vitest";
 import { hash, newHashTable } from "./index.js";
 
 describe("ch06-ex01(hash)", () => {
