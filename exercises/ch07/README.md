@@ -3,12 +3,14 @@
 ## 問題 7.1 💻🧪
 
 2次元配列を行列として扱い、行列の加算・乗算を行う関数を作成しなさい。
+加算・乗算が定義できないサイズの行列が渡された場合はエラーを投げること。テストでもその場合の挙動を検証しなさい。
 
 **出題範囲**: 7.7
 
 ## 問題 7.2 💻
 
-以下の関数を繰り返し (`for`, `while`) や条件分岐 (`if`) を利用せず `map`, `filter`, `reduce`, `forEach` 等のメソッドを利用して書き直しなさい。
+以下の関数を繰り返し文 (`for`, `while`) や `if` 文を利用せず `map`, `filter`, `reduce`, `forEach` 等のメソッドを利用して書き直しなさい。
+なお三項演算子 (`? :`) や `filter` などに渡す条件式は利用してよい。
 
 ```js
 function fizzbuzz(n) {
@@ -74,7 +76,7 @@ const data = [
 
 1. `math`の全員の合計点
 2. クラスAの`chemistry`の平均点
-3. 3科目合計点のクラスC内での平均点
+3. クラスCの生徒の3科目合計点の平均点
 4. 3科目合計点が最も高い人の`name`
 5. 全体の`geography`の標準偏差
 
@@ -139,7 +141,7 @@ console.log(sort(seq, (a, b) => b - a)); // [5, 4, 3, 2, 1]
 console.log(seq); // [1, 2, 3, 4, 5]
 ```
 
-**出題範囲**: 7.8.4
+**出題範囲**: 7.8.4, 7.8.6.3
 
 ## 問題 7.6 💻
 
@@ -174,7 +176,7 @@ function sort(
 }
 ```
 
-問題を解決するための計算方法や処理の手順のことを [アルゴリズム](https://ja.wikipedia.org/wiki/%E3%82%BD%E3%83%BC%E3%83%88) と呼ぶ。
+問題を解決するための計算方法や処理の手順のことを [アルゴリズム](https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0) と呼ぶ。
 ソートのアルゴリズムには様々なものが存在している ([参考](https://ja.wikipedia.org/wiki/%E3%82%BD%E3%83%BC%E3%83%88))。
 
 問題に対して複数のアルゴリズムが存在する場合、アルゴリズムをどうやって比較すべきだろうか。
@@ -191,14 +193,15 @@ function sort(
 ## 問題 7.8 💻📄
 
 文字列の書記素を反転させる関数を実装しなさい。例えば "家族 👨‍👨‍👧‍👧" が与えられれば "👨‍👨‍👧‍👧 族家" を返しなさい。
-ヒント: [Intl.Segmenter](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter)
-を使うか ゼロ幅接合子 について調べて実装しなさい。( [Intl.Segmenter](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter)を使う場合 tsconfig.js で ES2022 以上であることを確認して使用してください。)
+
+ヒント: [Intl.Segmenter](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter) を使うか、[ゼロ幅接合子](https://ja.wikipedia.org/wiki/%E3%82%BC%E3%83%AD%E5%B9%85%E6%8E%A5%E5%90%88%E5%AD%90) について調べて実装しなさい。
+なお `Intl.Segmenter` を使う場合は tsconfig.json の `target` が ES2022 以上であることを確認すること。
 
 **出題範囲**: 7.8.7
 
-## 問題 7.9 🖋
+## 問題 7.9 🖋️
 
-`"𠮷野家"[0]`や `"👨‍👨‍👧‍👧"[0]` が何を返す調べなさい。それぞれの結果について説明しなさい。問題 7.8 で得た絵文字に対する知見も述べなさい。
+`"𠮷野家"[0]`や `"👨‍👨‍👧‍👧"[0]` が何を返すか調べなさい。それぞれの結果について説明しなさい。問題 7.8 で得た絵文字に対する知見も述べなさい。
 
 **出題範囲**: 7.10
 
@@ -255,7 +258,7 @@ class DynamicSizeArray {
 ヒント: `push` の中では固定長の配列に要素を追加する空きが無い場合、倍サイズの固定長配列を作成しなさい
 
 ```js
-// this.array に空が無い場合は「再配置」を行う
+// this.array に空きが無い場合は「再配置」を行う
 if (this.len >= this.array.length()) {
   // 新しい固定長配列を作成
   const old = this.array;
@@ -268,7 +271,7 @@ if (this.len >= this.array.length()) {
 
 ## 問題 7.11 🖋️
 
-7.10 で作成した動的配列の push の平均時間計算量を説明しなさい。またその結果を用いて以下の関数 `copyA` と `copyB` に対し、`array.length` を `n` とした時の時間計算量を求めなさい。
+問題 7.10 で作成した動的配列の push の平均時間計算量を説明しなさい。またその結果を用いて以下の関数 `copyA` と `copyB` に対し、`array.length` を `n` とした時の時間計算量を求めなさい。
 
 ```js
 function copyA(array) {
@@ -289,7 +292,7 @@ function copyB(array) {
 }
 ```
 
-ヒント: `push` を $`n`$ 回呼び出したとき、7.10 の実装では配列を倍々にしていくので再配置は $`log_2 n`$ 回発生する。各再配置で要素のコピーは $`1, 2, 4, 8, ..., 2^{log_2 n}`$ 回発生する。再配置の際にコピー回数の総和は $`2^0 + 2^1 + 2^2 + ... + 2^{log_2 n} = ...`$ (等比数列の和の公式を思い出すこと)。この値を $`n`$ で割れば各 `push` の平均時間計算量が求められる。
+ヒント: `push` を $`n`$ 回呼び出したとき、7.10 の実装では配列を倍々にしていくので再配置は $`log_2 n`$ 回発生する。各再配置で要素のコピーは $`1, 2, 4, 8, ..., 2^{log_2 n}`$ 回発生する。再配置の際のコピー回数の総和は $`2^0 + 2^1 + 2^2 + ... + 2^{log_2 n} = ...`$ (等比数列の和の公式を思い出すこと)。この値を $`n`$ で割れば各 `push` の平均時間計算量が求められる。
 
 **参考**: [計算量](https://atcoder.jp/contests/apg4b/tasks/APG4b_w)
 
