@@ -1,4 +1,4 @@
-import { restrict, substract } from "./index.ts";
+import { restrict, substract } from "./index.js"; //index.tsになっており、テストができないのでindex.jsに書き換えました。
 
 describe("restrict", () => {
   const symbol = Symbol("test");
