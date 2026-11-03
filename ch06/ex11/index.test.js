@@ -1,4 +1,3 @@
-import { expect } from "vitest";
 import { p } from "./index.js";
 
 describe("ch06-ex11", () => {
