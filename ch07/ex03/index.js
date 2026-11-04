@@ -2,7 +2,7 @@ export function sum(arr){
     if(arr === undefined){
         arr = []; // sumに引数が渡されなった場合は空の配列を生成。
     }
-    return arr.reduce((x, y) => x + y, 0);
+    return arr.reduce((acc, cur) => acc + cur, 0);
 }
 
 export function join(arr, sep){
@@ -24,12 +24,23 @@ export function join(arr, sep){
 }
 
 export function reverse(arr){
-    const result = [];
     if(arr === undefined){
         throw new Error("arr must be an array");
     }
     return arr.reduce((acc, cur, index) => {
-        acc[arr.length - index - 1] = cur;
+        acc[arr.length - index - 1] = cur; //後ろから値を埋めていく。
         return acc;
     }, []);
+}
+
+export function every(arr, fn){
+    return arr.reduce((acc, cur, index) => { //everyは、コールバックを(要素, インデックス, 配列)の順で呼ぶ
+        return acc && fn(cur, index, arr); //一旦falseになったら、ずっとfalseにしたい。
+    },true);
+}
+
+export function some(arr, fn){
+    return arr.reduce((acc, cur, index) => { //someも、コールバックを(要素, インデックス, 配列)の順で呼ぶ
+        return acc || fn(cur, index, arr); //一旦trueになったら、ずっとtrueにしたい。
+    },false);
 }
