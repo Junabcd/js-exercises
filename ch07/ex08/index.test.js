@@ -1,4 +1,4 @@
-import { reverse } from "./index.ts";
+import { reverse } from "./index.js"; //index.tsになっており、テストができないのでindex.jsに書き換えました。
 
 test("reverse", () => {
   expect(reverse("abc123")).toBe("321cba");
