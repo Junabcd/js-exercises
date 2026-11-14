@@ -1,4 +1,4 @@
-import { pop, push, shift, unshift, sort } from "./index.js";
+import { pop, push, shift, unshift, sort } from "./index_20261113.js";
 
 test("pop", () => {
     const seq = [1, 2, 3, 4, 5];
@@ -19,7 +19,7 @@ test("push", () => {
     expect(seq).toEqual([1,2,3,4,5]);
 });
 
-test("shiftt", () => {
+test("shift", () => {
     const seq = [1, 2, 3, 4, 5];
     expect(() => {shift("str");}).toThrowError();
     expect(shift(seq)).toEqual([2,3,4,5]);
